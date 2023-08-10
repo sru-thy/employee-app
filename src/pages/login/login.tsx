@@ -19,13 +19,13 @@ const Login = () => {
   return (
     <section>
       <div className='section1'>
-        <div className='login'>
+        <div>
           <img src='assets/img/banner.png' className='login' />
         </div>
       </div>
       <div className='section2'>
         <div>
-          <div className='img-className'>
+          <div className='logo'>
             <img src='assets/img/kv-logo.png' className='logo' />
           </div>
           <form>
