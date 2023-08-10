@@ -1,29 +1,16 @@
+import Sidebar from '../../components/sidebar/sidebar';
+import Header from '../../components/header/header';
 import { useState } from 'react';
+import './styles.css';
 
 const employee = () => {
   const [type, setType] = useState('text');
 
   return (
     <section>
-      <aside className='sidebar'>
-        <div className='logo'>
-          <img src='kv logo.png' />
-        </div>
-        <div></div>
-        <ul className='side-nav'>
-          <li className='list'>
-            <a>
-              <div className='icon-li'>
-                <img src='icon.svg' />
-              </div>
-              <span>Employee List</span>
-            </a>
-          </li>
-        </ul>
-      </aside>
-
-      <div className='section2'>
-        <div className='header'>header</div>
+      <Sidebar></Sidebar>
+      <div className='sectionRight'>
+        <Header></Header>
         <div className='feed'>
           <div className='heading'>Create Employee</div>
           <div className='form'>

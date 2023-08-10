@@ -26,7 +26,7 @@ const Login = () => {
       <div className='section2'>
         <div>
           <div className='logo'>
-            <img src='assets/img/kv-logo.png' className='logo' />
+            <img src='assets/img/kv logo.png' className='logo' />
           </div>
           <form>
             <Input
