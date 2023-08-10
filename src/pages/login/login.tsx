@@ -6,9 +6,11 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
+
   const navigate = useNavigate();
   const submit = () => {
-    if (name.length == 0 || password.length == 0) console.log('provide username and password');
+    if (name.length == 0 || password.length == 0) setError(true);
     else navigate('/employee');
   };
 
@@ -39,6 +41,7 @@ const Login = () => {
               value={password}
               onChange={setPassword}
             ></Input>
+            {error && <div>Provide username and Password</div>}
             <Button value='Login' onClick={submit}></Button>
           </form>
         </div>
