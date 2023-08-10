@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Input from '../../components/Input/input';
 import Button from '../../components/button/button';
 import { useNavigate } from 'react-router-dom';
+import './styles.css';
 
 const Login = () => {
   const [name, setName] = useState('');
@@ -9,7 +10,8 @@ const Login = () => {
   const [error, setError] = useState(false);
 
   const navigate = useNavigate();
-  const submit = () => {
+  const submit = (e) => {
+    e.preventDefault();
     if (name.length == 0 || password.length == 0) setError(true);
     else navigate('/employee');
   };
