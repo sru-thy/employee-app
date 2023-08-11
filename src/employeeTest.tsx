@@ -1,11 +1,22 @@
-const employee = {
-  id: 1,
-  name: 'Sruthy',
-  username: 'sruthy',
-  experience: 1,
-  departmentId: '2',
-  role: 'user',
-  joiningDate: '11/02/2012'
-};
+const employees = [
+  {
+    name: 'Sruthy',
+    id: 1,
+    joiningDate: '11/02/2012',
+    role: 'user',
+    status: 'ACTIVE',
+    experience: 1,
+    action: 'action'
+  },
+  {
+    name: 'Sruthy',
+    id: 1,
+    joiningDate: '11/02/2012',
+    role: 'user',
+    status: 'INACTIVE',
+    experience: 1,
+    action: 'action'
+  }
+];
 
-export default employee;
+export default employees;
