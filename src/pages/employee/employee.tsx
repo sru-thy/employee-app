@@ -16,7 +16,12 @@ const EmployeePage = () => {
 
   return (
     <Layout>
-      <Subheader heading='Employee List' iconText='Create employee' iconImg={icon}></Subheader>
+      <Subheader
+        heading='Employee List'
+        iconText='Create employee'
+        iconImg={icon}
+        onClick={() => navigate(`/employee/create`)}
+      ></Subheader>
       <table className='table'>
         <TableHeader></TableHeader>
         {employees.map((employee) => (
