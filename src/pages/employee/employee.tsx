@@ -5,10 +5,11 @@ import Layout from '../../components/layout/layout';
 
 const employee = () => {
   const [type, setType] = useState('text');
+  const [icon] = useState('pencil');
 
   return (
     <Layout>
-      <Subheader></Subheader>
+      <Subheader heading='Employee List' iconText='Create employee' iconImg={icon}></Subheader>
       <div className='form'>
         <div className='input-flex'>
           <div className='wr'>
