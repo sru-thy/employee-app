@@ -56,8 +56,3 @@ select {
   justify-content: flex-start;
   padding: 10px;
 }
-.wr {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
