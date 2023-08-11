@@ -4,13 +4,14 @@ import Login from './pages/login/login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import EmployeePage from './pages/employee/employee';
 import Test from './pages/test/test';
+import EmployeeDetails from './pages/employeeDetails/employeeDetails';
 const App: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/employee' element={<EmployeePage />} />
-        <Route path='/employee/:id' element={<EmployeePage />} />
+        <Route path='/employee/:id' element={<EmployeeDetails />} />
         <Route path='/' element={<Test />} />
       </Routes>
     </BrowserRouter>
