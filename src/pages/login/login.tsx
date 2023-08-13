@@ -28,24 +28,12 @@ const Login = () => {
           <div className='logo'>
             <img src='assets/img/kv logo.png' className='logo' />
           </div>
-          <form>
-            <Input
-              label='Username'
-              type='text'
-              placeholder='username'
-              value={name}
-              onChange={setName}
-            ></Input>
-            <Input
-              label='Password'
-              type='password'
-              placeholder='password'
-              value={password}
-              onChange={setPassword}
-            ></Input>
+          <div className='login-form'>
+            <Input label='Username' type='text' value={name} onChange={setName}></Input>
+            <Input label='Password' type='password' value={password} onChange={setPassword}></Input>
             {error && <div>Provide username and Password</div>}
             <Button value='Login' onClick={submit}></Button>
-          </form>
+          </div>
         </div>
       </div>
     </section>
