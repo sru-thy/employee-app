@@ -4,7 +4,7 @@ import Subheader from '../../components/subheader/subheader';
 import Layout from '../../components/layout/layout';
 import { useParams } from 'react-router-dom';
 import employees from '../../employeeTest';
-import Status from '../../components/status/status';
+import DetailsItem from '../../components/empDetailsItem/empDetailsItem';
 
 const EmployeeDetails = () => {
   const [icon] = useState('pencil');
@@ -17,36 +17,13 @@ const EmployeeDetails = () => {
     <Layout>
       <Subheader heading='Employee Details' iconText='Edit' iconImg={icon}></Subheader>
       <div className='detailsCard'>
-        <div className='wr'>
-          <span>Employee Name</span>
-          <div>{employee.name}</div>
-        </div>
-        <div className='wr'>
-          <span>Joining Date</span>
-          <div>{employee.joiningDate}</div>
-        </div>
-        <div className='wr'>
-          <span>Experience</span>
-          <div>{employee.experience}</div>
-        </div>
-        <div className='wr'>
-          <span>Role</span>
-          <div>{employee.role}</div>
-        </div>
-        <div className='wr'>
-          <span>Status</span>
-          <div>
-            <Status status={employee.status}></Status>
-          </div>
-        </div>
-        <div className='wr'>
-          <span>Employee ID</span>
-          <div>{employee.id}</div>
-        </div>
-        <div className='wr'>
-          <span>Address</span>
-          <div>Mock Address</div>
-        </div>
+      <DetailsItem label="Employee Name" value={employee.name} type="text"/>
+      <DetailsItem label="Joining Date" value={employee.joiningDate} type="text"/>
+      <DetailsItem label="Experience" value={String(employee.experience)} type="text"/>
+      <DetailsItem label="Role" value={employee.role} type="text"/>
+      <DetailsItem label="Status" value={employee.status} type="status"/>
+      <DetailsItem label="Address" value='Mock Address' type="text"/>
+      <DetailsItem label="Employee ID" value={String(employee.id)} type="text"/>
       </div>
     </Layout>
   );
