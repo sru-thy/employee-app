@@ -6,7 +6,21 @@ import FormInput from '../../components/formInput/formInput';
 
 const CreateEmployee = () => {
   // const [type, setType] = useState('text');
-  const [name, setName] = useState('');
+  const [details, setDetails] = useState({
+    name: '',
+    id: 0,
+    joiningDate: '',
+    role: '',
+    status: '',
+    experience: 0,
+    action: ''
+  });
+  const handleChange = () => {
+    const temp = { ...details };
+
+    temp[key] = value;
+    setDetails(temp);
+  };
 
   return (
     <Layout>
@@ -18,21 +32,21 @@ const CreateEmployee = () => {
             type='text'
             placeholder='Employee name'
             value={name}
-            onChange={setName}
+            onChange={handleChange}
           ></FormInput>
           <FormInput
             label='Joining Date'
             type='text'
             placeholder='Joining Date'
             value={name}
-            onChange={setName}
+            onChange={handleChange}
           ></FormInput>
           <FormInput
             label='Experience'
             type='text'
             placeholder='Experienece'
             value={name}
-            onChange={setName}
+            onChange={handleChange}
           ></FormInput>
           <FormInput
             label='Department'
