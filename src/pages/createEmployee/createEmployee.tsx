@@ -3,6 +3,7 @@ import Layout from '../../components/layout/layout';
 import { useState } from 'react';
 import './createEmployee.css';
 import FormInput from '../../components/formInput/formInput';
+import { useDispatch } from 'react-redux';
 
 const CreateEmployee = () => {
   // const [type, setType] = seState('text');
@@ -16,12 +17,23 @@ const CreateEmployee = () => {
     action: '',
     address: ''
   });
+
+  const dispatch = useDispatch();
   const handleChange = (key: string, value: string) => {
     const temp = { ...details };
 
     temp[key] = value;
 
     setDetails(temp);
+  };
+
+  const handleSubmit = () => {
+    dispatch({
+      type: 'EMPLOYEE:CREATE',
+      payload: {
+        employee: details
+      }
+    });
   };
 
   return (
@@ -60,6 +72,7 @@ const CreateEmployee = () => {
             placeholder='Choose Department'
             value={details.department}
             onChange={handleChange}
+            options={['1', '2', '3', '4']}
           ></FormInput>
           <FormInput
             name='role'
@@ -67,6 +80,7 @@ const CreateEmployee = () => {
             type='select'
             placeholder='Choose Role'
             value={details.role}
+            options={['admin', 'user']}
             onChange={handleChange}
           ></FormInput>
           <FormInput
@@ -74,6 +88,7 @@ const CreateEmployee = () => {
             label='Status'
             type='select'
             placeholder='Status'
+            options={['ACTIVE', 'PROBATION', 'INACTIVE']}
             value={details.status}
             onChange={handleChange}
           ></FormInput>
@@ -87,7 +102,7 @@ const CreateEmployee = () => {
           ></FormInput>
         </div>
         <div className='end'>
-          <input type='submit' value='Create' className='form-create' />
+          <input type='submit' value='Create' className='form-create' onClick={handleSubmit} />
           <input type='submit' value='Cancel' className='form-cancel' />
         </div>
       </div>

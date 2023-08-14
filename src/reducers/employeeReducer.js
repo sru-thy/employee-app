@@ -30,6 +30,14 @@ const initialstate = [
 
 const employeeReducer = (state = initialstate, action) => {
   switch (action.type) {
+    case 'EMPLOYEE:CREATE': {
+      const newState = [...initialstate, action.payload.employee];
+
+      // eslint-disable-next-line no-debugger
+      debugger;
+
+      return newState;
+    }
     default:
       return state;
   }

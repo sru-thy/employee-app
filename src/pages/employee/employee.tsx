@@ -4,8 +4,9 @@ import Subheader from '../../components/subheader/subheader';
 import Layout from '../../components/layout/layout';
 import TableHeader from '../../components/tableHeader/tableHeader';
 import TableRow from '../../components/tableRow/tableRow';
-import employees from '../../employeeTest';
+// import employees from '../../employeeTest';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const EmployeePage = () => {
   const [icon] = useState('pencil');
@@ -13,6 +14,9 @@ const EmployeePage = () => {
   const onClick = (id) => {
     navigate(`/employee/${id}`);
   };
+  const employeesData = useSelector((state: any) => {
+    return state.employees;
+  });
 
   return (
     <Layout>
@@ -24,7 +28,7 @@ const EmployeePage = () => {
       ></Subheader>
       <table className='table'>
         <TableHeader></TableHeader>
-        {employees.map((employee) => (
+        {employeesData.map((employee) => (
           <TableRow key={employee.id} employee={employee} onClick={() => onClick(employee.id)} />
         ))}
       </table>

@@ -8,9 +8,18 @@ type FormInputPropTypes = {
   placeholder: string;
   value: string;
   onChange(key: string, value: string): void;
+  options?: string[];
 };
 
-const FormInput: FC<FormInputPropTypes> = ({ name, label, type, placeholder, value, onChange }) => {
+const FormInput: FC<FormInputPropTypes> = ({
+  name,
+  label,
+  type,
+  placeholder,
+  value,
+  onChange,
+  options
+}) => {
   return (
     <div className='wr'>
       <label>{label}</label>
@@ -24,10 +33,15 @@ const FormInput: FC<FormInputPropTypes> = ({ name, label, type, placeholder, val
           className='formInputCreate'
         />
       ) : (
-        <select>
+        <select name={name} onChange={(evt) => onChange(evt.target.name, evt.target.value)}>
           <option value={placeholder} disabled selected>
             {placeholder}
           </option>
+          {options.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
         </select>
       )}
     </div>

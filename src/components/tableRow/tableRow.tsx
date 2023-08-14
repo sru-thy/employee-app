@@ -7,13 +7,16 @@ type tableRowProps = {
 };
 
 const TableRow: FC<tableRowProps> = ({ employee, onClick }) => {
+  const keys = ['name', 'id', 'joiningDate', 'role', 'status', 'experience'];
+
   return (
     <tr className='tabled' onClick={onClick}>
-      {Object.keys(employee).map((i) => (
-        <td key={employee[i]}>
-          {i === 'status' ? <Status status={employee[i]}></Status> : employee[i]}
+      {keys.map((key) => (
+        <td key={employee[key]}>
+          {key === 'status' ? <Status status={employee[key]}></Status> : employee[key]}
         </td>
       ))}
+      <td> Action </td>
     </tr>
   );
 };
