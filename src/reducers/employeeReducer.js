@@ -33,10 +33,12 @@ const employeeReducer = (state = initialstate, action) => {
     case 'EMPLOYEE:CREATE': {
       const newState = [...initialstate, action.payload.employee];
 
-      // eslint-disable-next-line no-debugger
-      debugger;
-
       return newState;
+    }
+    case 'EMPLOYEE:DELETE': {
+      const updatedState = state.filter((emp) => emp.id != action.payload.id);
+
+      return updatedState;
     }
     default:
       return state;

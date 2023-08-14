@@ -6,7 +6,7 @@ import TableHeader from '../../components/tableHeader/tableHeader';
 import TableRow from '../../components/tableRow/tableRow';
 // import employees from '../../employeeTest';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const EmployeePage = () => {
   const [icon] = useState('pencil');
@@ -17,6 +17,16 @@ const EmployeePage = () => {
   const employeesData = useSelector((state: any) => {
     return state.employees;
   });
+  const dispatch = useDispatch();
+
+  const handleDelete = (id: string) => {
+    dispatch({
+      type: 'EMPLOYEE:DELETE',
+      payload: {
+        id
+      }
+    });
+  };
 
   return (
     <Layout>
@@ -29,7 +39,12 @@ const EmployeePage = () => {
       <table className='table'>
         <TableHeader></TableHeader>
         {employeesData.map((employee) => (
-          <TableRow key={employee.id} employee={employee} onClick={() => onClick(employee.id)} />
+          <TableRow
+            key={employee.id}
+            employee={employee}
+            onClick={() => onClick(employee.id)}
+            onDelete={() => handleDelete(employee.id)}
+          />
         ))}
       </table>
     </Layout>
