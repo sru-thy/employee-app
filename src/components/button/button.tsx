@@ -1,15 +1,21 @@
 import type { FC } from 'react';
 import './styles.css';
 
-interface ButtonProps {
+export type ButtonProps = {
   value: string;
-  onClick: (e) => void;
-}
+  onClick?: (e) => void;
+};
 
 const Button: FC<ButtonProps> = ({ value, onClick }) => {
   return (
     <div className='relative'>
-      <input type='submit' value={value} className='form-login' onClick={onClick} />
+      <input
+        type='submit'
+        value={value}
+        className='form-login'
+        onClick={onClick}
+        data-testid='button-test'
+      ></input>
     </div>
   );
 };

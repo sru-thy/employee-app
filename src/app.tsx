@@ -3,7 +3,6 @@ import './styles/global.css';
 import Login from './pages/login/login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import EmployeePage from './pages/employee/employee';
-import Test from './pages/test/test';
 import EmployeeDetails from './pages/employeeDetails/employeeDetails';
 import CreateEmployee from './pages/createEmployee/createEmployee';
 const App: FC = () => {
@@ -14,7 +13,6 @@ const App: FC = () => {
         <Route path='/employee' element={<EmployeePage />} />
         <Route path='/employee/:id' element={<EmployeeDetails />} />
         <Route path='/employee/create' element={<CreateEmployee />} />
-        <Route path='/' element={<Test />} />
       </Routes>
     </BrowserRouter>
 
