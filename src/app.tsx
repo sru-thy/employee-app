@@ -13,6 +13,7 @@ const App: FC = () => {
         <Route path='/employee' element={<EmployeePage />} />
         <Route path='/employee/:id' element={<EmployeeDetails />} />
         <Route path='/employee/create' element={<CreateEmployee />} />
+        <Route path='/employee/edit/:id' element={<CreateEmployee />} />
       </Routes>
     </BrowserRouter>
 

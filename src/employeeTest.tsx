@@ -6,7 +6,8 @@ const employees = [
     role: 'user',
     status: 'ACTIVE',
     experience: 1,
-    address: 'address'
+    address: 'address',
+    department: '1'
   },
   {
     name: 'Vaishnav',
@@ -15,7 +16,8 @@ const employees = [
     role: 'user',
     status: 'INACTIVE',
     experience: 1,
-    address: 'address'
+    address: 'address',
+    department: '2'
   },
   {
     name: 'Jithin',
@@ -24,7 +26,8 @@ const employees = [
     role: 'user',
     status: 'PROBATION',
     experience: 1,
-    address: 'address'
+    address: 'address',
+    department: '3'
   }
 ];
 

@@ -1,11 +1,12 @@
 import Subheader from '../../components/subheader/subheader';
 import Layout from '../../components/layout/layout';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './createEmployee.css';
 import FormInput from '../../components/formInput/formInput';
+import { useNavigate, useParams } from 'react-router-dom';
+import employees from '../../employeeTest';
 
 const CreateEmployee = () => {
-  // const [type, setType] = seState('text');
   const [details, setDetails] = useState({
     name: '',
     department: '',
@@ -13,23 +14,33 @@ const CreateEmployee = () => {
     role: '',
     status: '',
     experience: 0,
-    action: '',
     address: ''
   });
+
   const handleChange = (key: string, value: string) => {
     const temp = { ...details };
 
     temp[key] = value;
-
     setDetails(temp);
   };
+
+  const navigate = useNavigate();
   const handleSubmit = () => {
-    console.log('');
+    navigate('/employee');
   };
+
+  const { id } = useParams();
+  const isEditing = !!id;
+
+  useEffect(() => {
+    const employee = employees.find((emp) => emp.id == Number(id));
+
+    if (employee) setDetails(employee);
+  }, [id]);
 
   return (
     <Layout>
-      <Subheader heading='Create Employee'></Subheader>
+      <Subheader heading={isEditing ? 'Edit Employee' : 'Create Employee'}></Subheader>
       <div className='form'>
         <div className='input-flex'>
           <FormInput
@@ -93,7 +104,12 @@ const CreateEmployee = () => {
           ></FormInput>
         </div>
         <div className='end'>
-          <input type='submit' value='Create' className='form-create' onClick={handleSubmit} />
+          <input
+            type='submit'
+            value={isEditing ? 'Save' : 'Create'}
+            className='form-create'
+            onClick={handleSubmit}
+          />
           <input type='submit' value='Cancel' className='form-cancel' />
         </div>
       </div>

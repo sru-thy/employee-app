@@ -34,7 +34,7 @@ const FormInput: FC<FormInputPropTypes> = ({
         />
       ) : (
         <select name={name} onChange={(evt) => onChange(evt.target.name, evt.target.value)}>
-          <option value={placeholder} disabled selected>
+          <option value={placeholder} disabled>
             {placeholder}
           </option>
           {options.map((option) => (
