@@ -12,7 +12,11 @@ const DetailsItem: FC<ItemPropTypes> = ({ label, type, value }) => {
   return (
     <div className='emp-item'>
       <span>{label}</span>
-      {type != 'status' ? <div className='item-value'>{value}</div> : <Status status={value}></Status>}
+      {type != 'status' ? (
+        <div className='item-value'>{value}</div>
+      ) : (
+        <Status status={value}></Status>
+      )}
     </div>
   );
 };

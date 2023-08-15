@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './employeeDetails.css';
 import Subheader from '../../components/subheader/subheader';
 import Layout from '../../components/layout/layout';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import employees from '../../employeeTest';
 import DetailsItem from '../../components/empDetailsItem/empDetailsItem';
 
@@ -11,11 +11,16 @@ const EmployeeDetails = () => {
   const { id } = useParams();
   const employee = employees.find((emp) => emp.id == Number(id));
 
-  console.log(employee);
+  const navigate = useNavigate();
 
   return (
     <Layout>
-      <Subheader heading='Employee Details' iconText='Edit' iconImg={icon}></Subheader>
+      <Subheader
+        heading='Employee Details'
+        iconText='Edit'
+        iconImg={icon}
+        onClick={() => navigate(`/employee/edit/${id}`)}
+      ></Subheader>
       <div className='detailsCard'>
         <DetailsItem label='Employee Name' value={employee.name} type='text' />
         <DetailsItem label='Joining Date' value={employee.joiningDate} type='text' />
