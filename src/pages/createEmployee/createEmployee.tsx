@@ -23,6 +23,9 @@ const CreateEmployee = () => {
 
     setDetails(temp);
   };
+  const handleSubmit = () => {
+    console.log('');
+  };
 
   return (
     <Layout>
@@ -58,6 +61,7 @@ const CreateEmployee = () => {
             label='Department'
             type='select'
             placeholder='Choose Department'
+            options={['1', '2', '3', '4']}
             value={details.department}
             onChange={handleChange}
           ></FormInput>
@@ -68,12 +72,14 @@ const CreateEmployee = () => {
             placeholder='Choose Role'
             value={details.role}
             onChange={handleChange}
+            options={['admin', 'user']}
           ></FormInput>
           <FormInput
             name='status'
             label='Status'
             type='select'
             placeholder='Status'
+            options={['ACTIVE', 'PROBATION', 'INACTIVE']}
             value={details.status}
             onChange={handleChange}
           ></FormInput>
@@ -87,7 +93,7 @@ const CreateEmployee = () => {
           ></FormInput>
         </div>
         <div className='end'>
-          <input type='submit' value='Create' className='form-create' />
+          <input type='submit' value='Create' className='form-create' onClick={handleSubmit} />
           <input type='submit' value='Cancel' className='form-cancel' />
         </div>
       </div>
