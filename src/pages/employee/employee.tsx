@@ -6,9 +6,12 @@ import TableHeader from '../../components/tableHeader/tableHeader';
 import TableRow from '../../components/tableRow/tableRow';
 import employees from '../../employeeTest';
 import { useNavigate } from 'react-router-dom';
+import DeletePopup from '../../components/deletePopup/deletePopup';
 
 const EmployeePage = () => {
   const [icon] = useState('pencil');
+  const [open, setOpen] = useState(false);
+
   const navigate = useNavigate();
   const onClick = (id) => {
     navigate(`/employee/${id}`);
@@ -29,11 +32,14 @@ const EmployeePage = () => {
             key={employee.id}
             employee={employee}
             onClick={() => onClick(employee.id)}
-            onDelete={() => {}}
+            onDelete={() => {
+              setOpen(true);
+            }}
             onEdit={() => {}}
           />
         ))}
       </table>
+      {open ? <DeletePopup onClose={() => setOpen(false)}></DeletePopup> : null}
     </Layout>
   );
 };

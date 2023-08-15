@@ -19,5 +19,6 @@
   .img-td img {
     width:18px;
     height:18px;
-    margin: 5px;
+    margin: 7px;
+    cursor: pointer;
   }
