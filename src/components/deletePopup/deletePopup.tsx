@@ -3,9 +3,10 @@ import './deletePopup.css';
 
 type deletePopupTypes = {
   onClose: () => void;
+  onConfirm: () => void;
 };
 
-const DeletePopup: FC<deletePopupTypes> = ({ onClose }) => {
+const DeletePopup: FC<deletePopupTypes> = ({ onClose, onConfirm }) => {
   return (
     <div className='modal'>
       <div className='modal-content'>
@@ -13,8 +14,8 @@ const DeletePopup: FC<deletePopupTypes> = ({ onClose }) => {
         <div className='popHeading'>Are you sure ?</div>
         <div className='popSubheading'>Do you really want to delete employee ?</div>
         <div className='popupButton'>
-          <input type='submit' value='Confirm' className='pop-confirm' />
-          <input type='submit' value='Cancel' className='pop-cancel' />
+          <input type='submit' value='Confirm' className='pop-confirm' onClick={onConfirm} />
+          <input type='submit' value='Cancel' className='pop-cancel' onClick={onClose} />
         </div>
       </div>
     </div>

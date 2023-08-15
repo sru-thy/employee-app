@@ -39,7 +39,9 @@ const EmployeePage = () => {
           />
         ))}
       </table>
-      {open ? <DeletePopup onClose={() => setOpen(false)}></DeletePopup> : null}
+      {open ? (
+        <DeletePopup onConfirm={() => {}} onClose={() => setOpen(false)}></DeletePopup>
+      ) : null}
     </Layout>
   );
 };
