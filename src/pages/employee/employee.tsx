@@ -35,7 +35,7 @@ const EmployeePage = () => {
             onDelete={() => {
               setOpen(true);
             }}
-            onEdit={() => {}}
+            onEdit={() => navigate(`edit/${employee.id}`)}
           />
         ))}
       </table>
