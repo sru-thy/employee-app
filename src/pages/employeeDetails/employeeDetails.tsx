@@ -22,7 +22,7 @@ const EmployeeDetails = () => {
         <DetailsItem label='Experience' value={String(employee.experience)} type='text' />
         <DetailsItem label='Role' value={employee.role} type='text' />
         <DetailsItem label='Status' value={employee.status} type='status' />
-        <DetailsItem label='Address' value='Mock Address' type='text' />
+        <DetailsItem label='Address' value={employee.address} type='text' />
         <DetailsItem label='Employee ID' value={String(employee.id)} type='text' />
       </div>
     </Layout>
