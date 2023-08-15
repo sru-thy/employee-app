@@ -40,6 +40,11 @@ const employeeReducer = (state = initialstate, action) => {
 
       return updatedState;
     }
+    case 'EMPLOYEE:EDIT': {
+      const updatedState = state.filter((emp) => emp.id != action.payload.id);
+
+      return updatedState;
+    }
     default:
       return state;
   }

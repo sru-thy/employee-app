@@ -17,13 +17,13 @@ const EmployeeDetails = () => {
     <Layout>
       <Subheader heading='Employee Details' iconText='Edit' iconImg={icon}></Subheader>
       <div className='detailsCard'>
-      <DetailsItem label="Employee Name" value={employee.name} type="text"/>
-      <DetailsItem label="Joining Date" value={employee.joiningDate} type="text"/>
-      <DetailsItem label="Experience" value={String(employee.experience)} type="text"/>
-      <DetailsItem label="Role" value={employee.role} type="text"/>
-      <DetailsItem label="Status" value={employee.status} type="status"/>
-      <DetailsItem label="Address" value='Mock Address' type="text"/>
-      <DetailsItem label="Employee ID" value={String(employee.id)} type="text"/>
+        <DetailsItem label='Employee Name' value={employee.name} type='text' />
+        <DetailsItem label='Joining Date' value={employee.joiningDate} type='text' />
+        <DetailsItem label='Experience' value={String(employee.experience)} type='text' />
+        <DetailsItem label='Role' value={employee.role} type='text' />
+        <DetailsItem label='Status' value={employee.status} type='status' />
+        <DetailsItem label='Address' value='Mock Address' type='text' />
+        <DetailsItem label='Employee ID' value={String(employee.id)} type='text' />
       </div>
     </Layout>
   );

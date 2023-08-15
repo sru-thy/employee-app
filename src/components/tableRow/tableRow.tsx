@@ -4,7 +4,7 @@ import Status from '../status/status';
 type tableRowProps = {
   employee: Object;
   onClick: (e) => void;
-  onEdit?: (e) => void;
+  onEdit: (e) => void;
   onDelete: (e) => void;
 };
 

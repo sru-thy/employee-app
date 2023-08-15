@@ -27,6 +27,14 @@ const EmployeePage = () => {
       }
     });
   };
+  const handleEdit = (id: string) => {
+    dispatch({
+      type: 'EMPLOYEE:EDIT',
+      payload: {
+        id
+      }
+    });
+  };
 
   return (
     <Layout>
@@ -44,6 +52,7 @@ const EmployeePage = () => {
             employee={employee}
             onClick={() => onClick(employee.id)}
             onDelete={() => handleDelete(employee.id)}
+            onEdit={() => handleEdit(employee.id)}
           />
         ))}
       </table>

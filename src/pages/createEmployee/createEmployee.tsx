@@ -4,9 +4,16 @@ import { useState } from 'react';
 import './createEmployee.css';
 import FormInput from '../../components/formInput/formInput';
 import { useDispatch } from 'react-redux';
+// import { useParams } from 'react-router-dom';
 
 const CreateEmployee = () => {
   // const [type, setType] = seState('text');
+  // const { id } = useParams();
+
+  // if (id) {
+  //   const employee = employees.find((emp) => emp.id == Number(id));
+  // }
+
   const [details, setDetails] = useState({
     name: '',
     department: '',
@@ -18,7 +25,6 @@ const CreateEmployee = () => {
     address: ''
   });
 
-  const dispatch = useDispatch();
   const handleChange = (key: string, value: string) => {
     const temp = { ...details };
 
@@ -27,6 +33,7 @@ const CreateEmployee = () => {
     setDetails(temp);
   };
 
+  const dispatch = useDispatch();
   const handleSubmit = () => {
     dispatch({
       type: 'EMPLOYEE:CREATE',
