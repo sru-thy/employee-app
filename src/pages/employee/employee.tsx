@@ -25,7 +25,13 @@ const EmployeePage = () => {
       <table className='table'>
         <TableHeader></TableHeader>
         {employees.map((employee) => (
-          <TableRow key={employee.id} employee={employee} onClick={() => onClick(employee.id)} />
+          <TableRow
+            key={employee.id}
+            employee={employee}
+            onClick={() => onClick(employee.id)}
+            onDelete={() => {}}
+            onEdit={() => {}}
+          />
         ))}
       </table>
     </Layout>
