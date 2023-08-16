@@ -1,20 +1,15 @@
 import Subheader from '../../components/subheader/subheader';
 import Layout from '../../components/layout/layout';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './createEmployee.css';
 import FormInput from '../../components/formInput/formInput';
 import { useDispatch } from 'react-redux';
 import addEmployee from '../../actions/employeeActions';
 // import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import employees from '../../employeeTest';
 
 const CreateEmployee = () => {
-  // const [type, setType] = seState('text');
-  // const { id } = useParams();
-
-  // if (id) {
-  //   const employee = employees.find((emp) => emp.id == Number(id));
-  // }
-
   const [details, setDetails] = useState({
     name: '',
     department: '',
@@ -22,7 +17,6 @@ const CreateEmployee = () => {
     role: '',
     status: '',
     experience: 0,
-    action: '',
     address: ''
   });
 
@@ -30,18 +24,28 @@ const CreateEmployee = () => {
     const temp = { ...details };
 
     temp[key] = value;
-
     setDetails(temp);
   };
-
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
   const handleSubmit = () => {
     dispatch(addEmployee(details));
+    navigate('/employee');
   };
+
+  const { id } = useParams();
+  const isEditing = !!id;
+
+  useEffect(() => {
+    const employee = employees.find((emp) => emp.id == Number(id));
+
+    if (employee) setDetails(employee);
+  }, [id]);
 
   return (
     <Layout>
-      <Subheader heading='Create Employee'></Subheader>
+      <Subheader heading={isEditing ? 'Edit Employee' : 'Create Employee'}></Subheader>
       <div className='form'>
         <div className='input-flex'>
           <FormInput
@@ -73,9 +77,9 @@ const CreateEmployee = () => {
             label='Department'
             type='select'
             placeholder='Choose Department'
+            options={['1', '2', '3', '4']}
             value={details.department}
             onChange={handleChange}
-            options={['1', '2', '3', '4']}
           ></FormInput>
           <FormInput
             name='role'
@@ -103,9 +107,23 @@ const CreateEmployee = () => {
             value={details.address}
             onChange={handleChange}
           ></FormInput>
+          {isEditing ? (
+            <FormInput
+              name='employeeid'
+              label='Employee ID'
+              type='text'
+              placeholder=''
+              value={id}
+            ></FormInput>
+          ) : null}
         </div>
         <div className='end'>
-          <input type='submit' value='Create' className='form-create' onClick={handleSubmit} />
+          <input
+            type='submit'
+            value={isEditing ? 'Save' : 'Create'}
+            className='form-create'
+            onClick={handleSubmit}
+          />
           <input type='submit' value='Cancel' className='form-cancel' />
         </div>
       </div>

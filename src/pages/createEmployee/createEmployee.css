@@ -48,7 +48,9 @@ select {
   border-radius: 5px;
   border: 2px solid #a7a5a5;
   width: 10%;
+  background-color: #ffffff;
   color: #a7a5a5;
+  cursor: pointer;
 }
 .end {
   display: flex;

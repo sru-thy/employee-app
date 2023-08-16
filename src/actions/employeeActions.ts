@@ -7,7 +7,6 @@ type addEmployeeType = {
   role: string;
   status: string;
   experience: number;
-  action: string;
   address: string;
 };
 

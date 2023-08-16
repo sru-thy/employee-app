@@ -8,7 +8,7 @@ type tableRowProps = {
   onDelete: (e) => void;
 };
 
-const TableRow: FC<tableRowProps> = ({ employee, onClick, onEdit, onDelete }) => {
+const TableRow: FC<tableRowProps> = ({ employee, onClick, onDelete, onEdit }) => {
   const keys = ['name', 'id', 'joiningDate', 'role', 'status', 'experience'];
 
   return (

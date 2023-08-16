@@ -16,7 +16,7 @@ const Input: FC<InputPropTypes> = ({ label, type, value, onChange }) => {
         value={value}
         onChange={(evt) => onChange(evt.target.value)}
         className='form-input'
-        // required
+        required
       />
       <label>{label}</label>
     </div>

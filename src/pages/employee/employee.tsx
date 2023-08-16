@@ -7,9 +7,12 @@ import TableRow from '../../components/tableRow/tableRow';
 // import employees from '../../employeeTest';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import DeletePopup from '../../components/deletePopup/deletePopup';
 
 const EmployeePage = () => {
   const [icon] = useState('pencil');
+  const [open, setOpen] = useState(false);
+
   const navigate = useNavigate();
   const onClick = (id) => {
     navigate(`/employee/${id}`);
@@ -53,9 +56,16 @@ const EmployeePage = () => {
             onClick={() => onClick(employee.id)}
             onDelete={() => handleDelete(employee.id)}
             onEdit={() => handleEdit(employee.id)}
+            // onDelete={() => {
+            //   setOpen(true);
+            // }}
+            // onEdit={() => navigate(`edit/${employee.id}`)}
           />
         ))}
       </table>
+      {open ? (
+        <DeletePopup onConfirm={() => {}} onClose={() => setOpen(false)}></DeletePopup>
+      ) : null}
     </Layout>
   );
 };
