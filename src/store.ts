@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import employeeReducer from './reducers/employeeReducer';
+import employeeService from './services/employeeService';
 
 const store = configureStore({
-  reducer: { employees: employeeReducer }
+  reducer: { employees: employeeReducer, [employeeService.reducerPath]: employeeService.reducer },
+  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), employeeService.middleware]
 });
 
 export default store;

@@ -1,20 +1,34 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Input from '../../components/Input/input';
 import Button from '../../components/button/button';
 import { useNavigate } from 'react-router-dom';
 import './styles.css';
+import { useLoginMutation } from './api';
 
 const Login = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
 
+  const [login, { data, isSuccess }] = useLoginMutation();
+
   const navigate = useNavigate();
   const submit = (e) => {
     e.preventDefault();
     if (name.length == 0 || password.length == 0) setError(true);
-    else navigate('/employee');
+    else
+      login({
+        username: name,
+        password: password
+      });
   };
+
+  useEffect(() => {
+    if (data && isSuccess) {
+      localStorage.setItem('token', data.data.token);
+      navigate('/employees');
+    }
+  }, [data, isSuccess]);
 
   return (
     <section>

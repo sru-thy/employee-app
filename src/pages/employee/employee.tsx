@@ -6,12 +6,15 @@ import TableHeader from '../../components/tableHeader/tableHeader';
 import TableRow from '../../components/tableRow/tableRow';
 // import employees from '../../employeeTest';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import DeletePopup from '../../components/deletePopup/deletePopup';
+// import { useGetEmployeesQuery } from './api';
 
 const EmployeePage = () => {
   const [icon] = useState('pencil');
   const [open, setOpen] = useState(false);
+
+  // const { data: employeesData, isLoading } = useGetEmployeesQuery();
 
   const navigate = useNavigate();
   const onClick = (id) => {

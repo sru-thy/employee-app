@@ -12,4 +12,6 @@ const employeeService = createApi({
   })
 });
 
-export const { useGetEmployeesQuery } = employeeService;
+export default employeeService;
+
+export const { useGetEmployeesQuery, useLazyGetEmployeesQuery } = employeeService;
