@@ -102,6 +102,15 @@ const CreateEmployee = () => {
             value={details.address}
             onChange={handleChange}
           ></FormInput>
+          {isEditing ? (
+            <FormInput
+              name='employeeid'
+              label='Employee ID'
+              type='text'
+              placeholder=''
+              value={id}
+            ></FormInput>
+          ) : null}
         </div>
         <div className='end'>
           <input

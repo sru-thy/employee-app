@@ -7,7 +7,7 @@ type FormInputPropTypes = {
   type: 'text' | 'password' | 'select';
   placeholder: string;
   value: string;
-  onChange(key: string, value: string): void;
+  onChange?(key: string, value: string): void;
   options?: string[];
 };
 
