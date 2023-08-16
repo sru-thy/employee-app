@@ -31,12 +31,7 @@ const EmployeePage = () => {
     });
   };
   const handleEdit = (id: string) => {
-    dispatch({
-      type: 'EMPLOYEE:EDIT',
-      payload: {
-        id
-      }
-    });
+    navigate(`edit/${id}`);
   };
 
   return (
@@ -59,7 +54,6 @@ const EmployeePage = () => {
             // onDelete={() => {
             //   setOpen(true);
             // }}
-            // onEdit={() => navigate(`edit/${employee.id}`)}
           />
         ))}
       </table>

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import './createEmployee.css';
 import FormInput from '../../components/formInput/formInput';
 import { useDispatch } from 'react-redux';
-import addEmployee from '../../actions/employeeActions';
+import { addEmployee, editEmployee } from '../../actions/employeeActions';
 // import { useParams } from 'react-router-dom';
 import { useNavigate, useParams } from 'react-router-dom';
 import employees from '../../employeeTest';
@@ -26,16 +26,21 @@ const CreateEmployee = () => {
     temp[key] = value;
     setDetails(temp);
   };
+  const { id } = useParams();
+  const isEditing = !!id;
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
   const handleSubmit = () => {
-    dispatch(addEmployee(details));
-    navigate('/employee');
+    if (!isEditing) {
+      console.log('adding employe');
+      dispatch(addEmployee(details));
+      navigate('/employee');
+    } else {
+      dispatch(editEmployee({ id: id, ...details }));
+      navigate('/employee');
+    }
   };
-
-  const { id } = useParams();
-  const isEditing = !!id;
 
   useEffect(() => {
     const employee = employees.find((emp) => emp.id == Number(id));
@@ -76,7 +81,7 @@ const CreateEmployee = () => {
             name='department'
             label='Department'
             type='select'
-            placeholder='Choose Department'
+            placeholder={isEditing ? details.department : 'Choose Department'}
             options={['1', '2', '3', '4']}
             value={details.department}
             onChange={handleChange}
@@ -85,7 +90,7 @@ const CreateEmployee = () => {
             name='role'
             label='Role'
             type='select'
-            placeholder='Choose Role'
+            placeholder={isEditing ? details.role : 'Choose Role'}
             value={details.role}
             options={['admin', 'user']}
             onChange={handleChange}
@@ -94,7 +99,7 @@ const CreateEmployee = () => {
             name='status'
             label='Status'
             type='select'
-            placeholder='Status'
+            placeholder={isEditing ? details.status : 'Status'}
             options={['ACTIVE', 'PROBATION', 'INACTIVE']}
             value={details.status}
             onChange={handleChange}

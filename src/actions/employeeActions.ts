@@ -1,6 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 
 type addEmployeeType = {
+  id?: string;
   name: string;
   department: string;
   joiningDate: string;
@@ -11,5 +12,6 @@ type addEmployeeType = {
 };
 
 const addEmployee = createAction<addEmployeeType>('EMPLOYEE:CREATE');
+const editEmployee = createAction<addEmployeeType>('EMPLOYEE:EDIT');
 
-export default addEmployee;
+export { addEmployee, editEmployee };
