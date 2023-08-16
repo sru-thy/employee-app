@@ -31,7 +31,7 @@ const initialstate = [
 const employeeReducer = (state = initialstate, action) => {
   switch (action.type) {
     case 'EMPLOYEE:CREATE': {
-      const newState = [...initialstate, action.payload.employee];
+      const newState = [...initialstate, action.payload];
 
       return newState;
     }

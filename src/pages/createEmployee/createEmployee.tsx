@@ -4,6 +4,7 @@ import { useState } from 'react';
 import './createEmployee.css';
 import FormInput from '../../components/formInput/formInput';
 import { useDispatch } from 'react-redux';
+import addEmployee from '../../actions/employeeActions';
 // import { useParams } from 'react-router-dom';
 
 const CreateEmployee = () => {
@@ -35,12 +36,7 @@ const CreateEmployee = () => {
 
   const dispatch = useDispatch();
   const handleSubmit = () => {
-    dispatch({
-      type: 'EMPLOYEE:CREATE',
-      payload: {
-        employee: details
-      }
-    });
+    dispatch(addEmployee(details));
   };
 
   return (

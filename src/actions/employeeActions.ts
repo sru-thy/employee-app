@@ -11,4 +11,6 @@ type addEmployeeType = {
   address: string;
 };
 
-const addEmployee = createAction<addEmployeeType>('EMPLOYEE.CREATE');
+const addEmployee = createAction<addEmployeeType>('EMPLOYEE:CREATE');
+
+export default addEmployee;
