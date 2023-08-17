@@ -15,7 +15,6 @@ const TableRow: FC<tableRowProps> = ({ employee, onClick, onDelete, onEdit }) =>
     <tr className='tabled'>
       {keys.map((key) => (
         <td key={employee[key]} onClick={onClick}>
-          {console.log(employee[key])}
           {key === 'status' ? <Status status={employee[key]}></Status> : employee[key]}
         </td>
       ))}

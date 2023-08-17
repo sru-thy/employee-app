@@ -13,4 +13,4 @@ const employeeDetailsApi = baseApi.injectEndpoints({
 
 export default employeeDetailsApi;
 
-export const { useGetEmployeeByIDQuery } = employeeDetailsApi;
+export const { useGetEmployeeByIDQuery, useLazyGetEmployeeByIDQuery } = employeeDetailsApi;
