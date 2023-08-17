@@ -18,7 +18,7 @@ const CreateEmployee = () => {
     username: 'mockusername',
     password: 'mockpassword',
     joiningDate: '',
-    experience: 0,
+    experience: null,
     departmentId: '',
     role: '',
     status: '',
@@ -77,9 +77,9 @@ const CreateEmployee = () => {
       <Subheader heading={isEditing ? 'Edit Employee' : 'Create Employee'}></Subheader>
       <div className='form'>
         <div className='input-flex'>
-          {console.log('details', details)}
           {departments && roles && (
             <>
+              {console.log('details', details)}
               <FormInput
                 name='name'
                 label='Employee Name'
@@ -100,8 +100,8 @@ const CreateEmployee = () => {
                 name='experience'
                 label='Experience'
                 type='text'
-                placeholder='Experienece'
-                value={String(details.experience)}
+                placeholder='Experience'
+                value={details.experience}
                 onChange={handleChange}
               ></FormInput>
               <FormInput
