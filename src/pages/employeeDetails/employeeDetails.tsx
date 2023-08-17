@@ -22,7 +22,7 @@ const EmployeeDetails = () => {
         heading='Employee Details'
         iconText='Edit'
         iconImg={icon}
-        onClick={() => navigate(`/employee/edit/${id}`)}
+        onClick={() => navigate(`/employees/edit/${id}`)}
       ></Subheader>
       <div className='detailsCard'>
         {employee && (

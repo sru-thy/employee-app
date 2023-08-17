@@ -12,9 +12,9 @@ const App: FC = () => {
       <Routes>
         <Route path='/login' element={<Login />} />
         <Route path='/employees' element={<EmployeePage />} />
-        <Route path='/employee/:id' element={<EmployeeDetails />} />
-        <Route path='/employee/create' element={<CreateEmployee />} />
-        <Route path='/employee/edit/:id' element={<CreateEmployee />} />
+        <Route path='/employees/:id' element={<EmployeeDetails />} />
+        <Route path='/employees/create' element={<CreateEmployee />} />
+        <Route path='/employees/edit/:id' element={<CreateEmployee />} />
       </Routes>
     </BrowserRouter>
 

@@ -17,7 +17,7 @@ const EmployeePage = () => {
   const { data: employeesData } = useGetEmployeesQuery();
 
   const navigate = useNavigate();
-  const onClick = (id) => navigate(`/employee/${id}`);
+  const onClick = (id) => navigate(`/employees/${id}`);
 
   const dispatch = useDispatch();
 
@@ -30,7 +30,7 @@ const EmployeePage = () => {
     });
   };
   const handleEdit = (id: string) => {
-    navigate(`edit/${id}`);
+    navigate(`/employees/edit/${id}`);
   };
 
   return (
@@ -39,7 +39,7 @@ const EmployeePage = () => {
         heading='Employee List'
         iconText='Create employee'
         iconImg={icon}
-        onClick={() => navigate(`/employee/create`)}
+        onClick={() => navigate(`/employees/create`)}
       ></Subheader>
       <table className='table'>
         <TableHeader></TableHeader>
