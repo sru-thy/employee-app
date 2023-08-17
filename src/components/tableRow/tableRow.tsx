@@ -11,9 +11,6 @@ type tableRowProps = {
 const TableRow: FC<tableRowProps> = ({ employee, onClick, onDelete, onEdit }) => {
   const keys = ['name', 'id', 'joiningDate', 'role', 'status', 'experience'];
 
-  // eslint-disable-next-line no-debugger
-  debugger;
-
   return (
     <tr className='tabled'>
       {keys.map((key) => (

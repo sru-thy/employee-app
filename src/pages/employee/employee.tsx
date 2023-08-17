@@ -16,7 +16,6 @@ const EmployeePage = () => {
 
   const { data: employeesData } = useGetEmployeesQuery();
 
-  console.log('data', employeesData);
   const navigate = useNavigate();
   const onClick = (id) => navigate(`/employee/${id}`);
 
