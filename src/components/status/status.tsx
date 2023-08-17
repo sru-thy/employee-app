@@ -12,6 +12,8 @@ const Status: FC<statusProps> = ({ status }) => {
     PROBATION: { label: 'Terminated', color: '#f5ecb8' }
   };
 
+  console.log(status);
+
   return (
     <div className='status' style={{ backgroundColor: statusMap[status].color }}>
       {statusMap[status].label}

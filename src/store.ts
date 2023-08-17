@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import employeeReducer from './reducers/employeeReducer';
-import employeeService from './services/employeeService';
+import employeeApi from './pages/employee/api';
 
 const store = configureStore({
-  reducer: { employees: employeeReducer, [employeeService.reducerPath]: employeeService.reducer },
-  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), employeeService.middleware]
+  reducer: { employees: employeeReducer, [employeeApi.reducerPath]: employeeApi.reducer },
+  middleware: (getDefaultMiddleware) => [...getDefaultMiddleware(), employeeApi.middleware]
 });
 
 export default store;

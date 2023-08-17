@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import EmployeePage from './pages/employee/employee';
 import EmployeeDetails from './pages/employeeDetails/employeeDetails';
 import CreateEmployee from './pages/createEmployee/createEmployee';
+
 const App: FC = () => {
   return (
     <BrowserRouter>
@@ -16,6 +17,8 @@ const App: FC = () => {
         <Route path='/employee/edit/:id' element={<CreateEmployee />} />
       </Routes>
     </BrowserRouter>
+
+    // <Login></Login>
   );
 };
 
