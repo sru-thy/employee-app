@@ -4,11 +4,14 @@ import Button from '../../components/button/button';
 import { useNavigate } from 'react-router-dom';
 import './styles.css';
 import { useLoginMutation } from './api';
+import { useDispatch } from 'react-redux';
+import { setRole } from '../../actions/employeeActions';
 
 const Login = () => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const dispatch = useDispatch();
 
   const [login, { data, isSuccess }] = useLoginMutation();
 
@@ -26,6 +29,7 @@ const Login = () => {
   useEffect(() => {
     if (data && isSuccess) {
       localStorage.setItem('token', data.data.token);
+      dispatch(setRole(data.data.role));
       navigate('/employees');
     }
   }, [data, isSuccess]);

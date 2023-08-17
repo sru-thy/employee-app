@@ -1,4 +1,3 @@
-import Subheader from '../../components/subheader/subheader';
 import Layout from '../../components/layout/layout';
 import { useEffect, useState } from 'react';
 import './createEmployee.css';
@@ -72,9 +71,12 @@ const CreateEmployee = () => {
     setDetails(updateDetails);
   }, [isSuccess]);
 
+  const subheaderProps = {
+    heading: isEditing ? 'Edit Employee' : 'Create Employee'
+  };
+
   return (
-    <Layout>
-      <Subheader heading={isEditing ? 'Edit Employee' : 'Create Employee'}></Subheader>
+    <Layout subheaderProps={subheaderProps}>
       <div className='form'>
         <div className='input-flex'>
           {departments && roles && (

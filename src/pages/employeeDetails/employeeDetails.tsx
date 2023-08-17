@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './employeeDetails.css';
-import Subheader from '../../components/subheader/subheader';
+// import Subheader from '../../components/subheader/subheader';
 import Layout from '../../components/layout/layout';
 import { useNavigate, useParams } from 'react-router-dom';
 // import employees from '../../employeeTest';
@@ -15,15 +15,15 @@ const EmployeeDetails = () => {
 
   console.log('employee', employee);
   const navigate = useNavigate();
+  const subheaderProps = {
+    heading: 'Employee Details',
+    iconText: 'Edit',
+    iconImg: icon,
+    onClick: () => navigate(`/employees/edit/${id}`)
+  };
 
   return (
-    <Layout>
-      <Subheader
-        heading='Employee Details'
-        iconText='Edit'
-        iconImg={icon}
-        onClick={() => navigate(`/employees/edit/${id}`)}
-      ></Subheader>
+    <Layout subheaderProps={subheaderProps}>
       <div className='detailsCard'>
         {employee && (
           <>

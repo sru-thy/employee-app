@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './styles.css';
-import Subheader from '../../components/subheader/subheader';
+// import Subheader from '../../components/subheader/subheader';
 import Layout from '../../components/layout/layout';
 import TableHeader from '../../components/tableHeader/tableHeader';
 import TableRow from '../../components/tableRow/tableRow';
@@ -29,14 +29,15 @@ const EmployeePage = () => {
     navigate(`/employees/edit/${id}`);
   };
 
+  const subheaderProps = {
+    heading: 'Employee List',
+    iconText: 'Create employee',
+    iconImg: icon,
+    onClick: () => navigate(`/employees/create`)
+  };
+
   return (
-    <Layout>
-      <Subheader
-        heading='Employee List'
-        iconText='Create employee'
-        iconImg={icon}
-        onClick={() => navigate(`/employees/create`)}
-      ></Subheader>
+    <Layout subheaderProps={subheaderProps}>
       <table className='table'>
         <TableHeader></TableHeader>
         {employeesData &&
