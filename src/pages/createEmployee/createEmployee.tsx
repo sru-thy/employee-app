@@ -10,6 +10,7 @@ import {
   useUpdateEmployeeMutation
 } from './api';
 import { useLazyGetEmployeeByIDQuery } from '../employeeDetails/api';
+import { useGetUserQuery } from '../employee/api';
 
 const CreateEmployee = () => {
   const [details, setDetails] = useState({
@@ -49,6 +50,7 @@ const CreateEmployee = () => {
   const [getEmp, { data: results, isSuccess }] = useLazyGetEmployeeByIDQuery();
   const [createEmployee] = useCreateEmployeeMutation();
   const [updateEmployee] = useUpdateEmployeeMutation();
+  const { data: user } = useGetUserQuery();
 
   const navigate = useNavigate();
   const handleSubmit = () => {
@@ -76,7 +78,7 @@ const CreateEmployee = () => {
   };
 
   return (
-    <Layout subheaderProps={subheaderProps}>
+    <Layout subheaderProps={subheaderProps} userRole={user?.data.role}>
       <div className='form'>
         <div className='input-flex'>
           {departments && roles && (

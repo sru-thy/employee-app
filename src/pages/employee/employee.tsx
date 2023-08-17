@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import './styles.css';
-// import Subheader from '../../components/subheader/subheader';
 import Layout from '../../components/layout/layout';
 import TableHeader from '../../components/tableHeader/tableHeader';
 import TableRow from '../../components/tableRow/tableRow';
 import { useNavigate } from 'react-router-dom';
 import DeletePopup from '../../components/deletePopup/deletePopup';
-import { useDeleteEmployeesMutation, useGetEmployeesQuery } from './api';
+import { useDeleteEmployeesMutation, useGetEmployeesQuery, useGetUserQuery } from './api';
 
 const EmployeePage = () => {
   const [icon] = useState('pencil');
@@ -15,6 +14,7 @@ const EmployeePage = () => {
 
   const { data: employeesData } = useGetEmployeesQuery();
   const [deleteEmp] = useDeleteEmployeesMutation();
+  const { data: user } = useGetUserQuery();
 
   const navigate = useNavigate();
   const onClick = (id) => navigate(`/employees/${id}`);
@@ -37,9 +37,9 @@ const EmployeePage = () => {
   };
 
   return (
-    <Layout subheaderProps={subheaderProps}>
+    <Layout subheaderProps={subheaderProps} userRole={user?.data.role}>
       <table className='table'>
-        <TableHeader></TableHeader>
+        <TableHeader userRole={user?.data.role}></TableHeader>
         {employeesData &&
           employeesData.data.map((employee) => (
             <TableRow
@@ -51,6 +51,7 @@ const EmployeePage = () => {
                 setOpen(true);
                 setId(employee.id);
               }}
+              userRole={user?.data.role}
             />
           ))}
         {open ? (

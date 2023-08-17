@@ -1,17 +1,17 @@
 import { useState } from 'react';
 import './employeeDetails.css';
-// import Subheader from '../../components/subheader/subheader';
 import Layout from '../../components/layout/layout';
 import { useNavigate, useParams } from 'react-router-dom';
-// import employees from '../../employeeTest';
 import DetailsItem from '../../components/empDetailsItem/empDetailsItem';
 import { useGetEmployeeByIDQuery } from './api';
+import { useGetUserQuery } from '../employee/api';
 
 const EmployeeDetails = () => {
   const [icon] = useState('pencil');
   const { id } = useParams();
 
   const { data: employee } = useGetEmployeeByIDQuery(id);
+  const { data: user } = useGetUserQuery();
 
   console.log('employee', employee);
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const EmployeeDetails = () => {
   };
 
   return (
-    <Layout subheaderProps={subheaderProps}>
+    <Layout subheaderProps={subheaderProps} userRole={user?.data.role}>
       <div className='detailsCard'>
         {employee && (
           <>

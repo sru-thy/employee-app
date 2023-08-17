@@ -1,6 +1,6 @@
 import './tableHeader.css';
 
-const TableHeader = () => {
+const TableHeader = ({ userRole }) => {
   const headerData = [
     'Employee Name',
     'Employee ID',
@@ -8,7 +8,7 @@ const TableHeader = () => {
     'Role',
     'Status',
     'Experience',
-    'Action'
+    userRole == 'admin' ? 'Action' : null
   ];
 
   return (

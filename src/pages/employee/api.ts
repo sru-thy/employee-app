@@ -26,10 +26,21 @@ const employeeApi = baseApi.injectEndpoints({
         method: 'DELETE'
       }),
       invalidatesTags: ['employee.list']
+    }),
+    getUser: builder.query<any, void>({
+      query: () => ({
+        url: '/user',
+        method: 'get'
+      })
     })
   })
 });
 
 export default employeeApi;
 
-export const { useGetEmployeesQuery, useLazyGetEmployeesQuery, useDeleteEmployeesMutation } = employeeApi;
+export const {
+  useGetEmployeesQuery,
+  useLazyGetEmployeesQuery,
+  useDeleteEmployeesMutation,
+  useGetUserQuery
+} = employeeApi;

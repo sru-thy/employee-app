@@ -6,15 +6,14 @@ type subheaderProps = {
   iconText?: string;
   iconImg?: string;
   onClick?: (e) => void;
+  userRole: string;
 };
 
-const Subheader: FC<subheaderProps> = ({ heading, iconText, iconImg, onClick }) => {
-  console.log(onClick);
-
+const Subheader: FC<subheaderProps> = ({ heading, iconText, iconImg, onClick, userRole }) => {
   return (
     <div className='subheader'>
       <div className='heading'>{heading}</div>
-      {iconText ? (
+      {userRole == 'admin' && iconText ? (
         <a className='subheader-right' onClick={onClick}>
           <div className='icon-edit'>
             <img src={`assets/icons/${iconImg}.svg`} />
