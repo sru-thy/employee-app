@@ -4,31 +4,27 @@ import Subheader from '../../components/subheader/subheader';
 import Layout from '../../components/layout/layout';
 import TableHeader from '../../components/tableHeader/tableHeader';
 import TableRow from '../../components/tableRow/tableRow';
-// import employees from '../../employeeTest';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import DeletePopup from '../../components/deletePopup/deletePopup';
-import { useGetEmployeesQuery } from './api';
+import { useDeleteEmployeesMutation, useGetEmployeesQuery } from './api';
 
 const EmployeePage = () => {
   const [icon] = useState('pencil');
+  const [id, setId] = useState('');
   const [open, setOpen] = useState(false);
 
   const { data: employeesData } = useGetEmployeesQuery();
+  const [deleteEmp] = useDeleteEmployeesMutation();
 
   const navigate = useNavigate();
   const onClick = (id) => navigate(`/employees/${id}`);
 
-  const dispatch = useDispatch();
-
-  const handleDelete = (id: string) => {
-    dispatch({
-      type: 'EMPLOYEE:DELETE',
-      payload: {
-        id
-      }
-    });
+  const handleDelete = (id) => {
+    deleteEmp(id);
+    setOpen(false);
+    navigate('/employees');
   };
+
   const handleEdit = (id: string) => {
     navigate(`/employees/edit/${id}`);
   };
@@ -49,17 +45,20 @@ const EmployeePage = () => {
               key={employee.id}
               employee={employee}
               onClick={() => onClick(employee.id)}
-              onDelete={() => handleDelete(String(employee.id))}
               onEdit={() => handleEdit(String(employee.id))}
-              // onDelete={() => {
-              //   setOpen(true);
-              // }}
+              onDelete={() => {
+                setOpen(true);
+                setId(employee.id);
+              }}
             />
           ))}
+        {open ? (
+          <DeletePopup
+            onConfirm={() => handleDelete(id)}
+            onClose={() => setOpen(false)}
+          ></DeletePopup>
+        ) : null}
       </table>
-      {open ? (
-        <DeletePopup onConfirm={() => {}} onClose={() => setOpen(false)}></DeletePopup>
-      ) : null}
     </Layout>
   );
 };

@@ -12,7 +12,8 @@ const loginApi = baseApi.injectEndpoints({
         url: '/employees/login',
         method: 'POST',
         body
-      })
+      }),
+      invalidatesTags: ['employee.list']
     })
   })
 });

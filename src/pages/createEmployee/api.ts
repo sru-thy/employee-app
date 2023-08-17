@@ -7,7 +7,8 @@ const createEmployeeApi = baseApi.injectEndpoints({
         url: '/employees',
         method: 'POST',
         body
-      })
+      }),
+      invalidatesTags: ['employee.list']
     }),
     getDepartmentOptions: builder.query<any, void>({
       query: () => ({
@@ -26,7 +27,8 @@ const createEmployeeApi = baseApi.injectEndpoints({
         url: `employees/${id}`,
         method: 'PATCH',
         body: patch
-      })
+      }),
+      invalidatesTags: ['employee.list']
     })
   })
 });
